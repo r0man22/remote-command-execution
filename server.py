@@ -16,7 +16,7 @@ async def handle_client(websocket):
 		await websocket.send(output)
 
 async def main():
-	async with serve(handle_client, "localhost", 8765):
+	async with serve(handle_client, "0.0.0.0", 8765):
 		await asyncio.Future()
 
 if __name__ == "__main__":
