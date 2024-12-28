@@ -2,7 +2,7 @@ import asyncio
 import subprocess
 from websockets import serve
 
-bat_script = "script_runner.bat"  # .bat dosyasının adı
+bat_script = "bat_file.bat"  # .bat dosyasının adı
 
 # .bat dosyasını bağımsız başlat, terminali gizle ve Python scripti kapansa bile çalışmaya devam etsin
 subprocess.Popen(
